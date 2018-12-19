@@ -10,6 +10,7 @@
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
+  <script src="./moment.js"></script>
 </head>
 <body>
     <!-- 網頁標題 -->
@@ -23,12 +24,12 @@
         <h1>我的待辦事項</h1>
 
         <form action="" id="inputArea">
-            <input type="text" placeholder="請輸入待辦事項">
-            <button>輸入</button>
+            <input id="addTodoInput" type="text" name="newTodo" placeholder="請輸入待辦事項">
+            <button id="addTodoBtn">輸入</button>
         </form>
 
         <ul>
-            <li>待辦事項1</li>
+            <!-- <li>待辦事項1</li> -->
         </ul>
     </div>
 
