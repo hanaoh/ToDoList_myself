@@ -15,7 +15,7 @@ function render(todoData){
 
     for (var i = 0; i < todoData.length; i++){
         HTML = HTML + `
-        <li>
+        <li id="${todoData[i].id}">
             <span class="delete">
                 刪除
             </span>
@@ -23,6 +23,8 @@ function render(todoData){
             ${moment(todoData[i].createdAt).format("MM/DD hh:mm")}
         </li>`;
     };
+
+    $("ul").empty();
 
     $ul.append(HTML);
 };
@@ -49,13 +51,12 @@ $("#addTodoBtn").on("click", function(event){
 
     // $("ul").append(`<li>${newTodoText} ${moment().format("MM/DD hh:mm")}</li>`);
     var newTodoData = {
+        id: uuid(),
         content: newTodoText,
         createdAt: moment().valueOf()
     };
 
     todoData.push(newTodoData);
-
-    $("ul").empty();
 
     render(todoData);
 
@@ -63,5 +64,12 @@ $("#addTodoBtn").on("click", function(event){
 });
 
 $("ul").on("click", ".delete", function(){
-    $(this).parent("li").remove();
+    var idToDelete = $(this).parent("li").attr("id");
+
+    todoData = todoData.filter(function(todo){
+        if(todo.id === idToDelete) return false;
+        else return true;
+    });
+
+    render(todoData);
 });
